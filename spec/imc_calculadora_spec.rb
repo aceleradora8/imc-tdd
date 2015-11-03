@@ -1,4 +1,5 @@
 require_relative '../imc_calculadora'
+require_relative 'spec_helper.rb'
 
 describe IMCCalculadora do 
 	before :each do
