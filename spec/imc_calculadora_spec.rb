@@ -1,7 +1,7 @@
 require_relative '../imc_calculadora'
 require_relative 'spec_helper.rb'
 
-describe IMCCalculadora do 
+describe IMCCalculadora do
 	before :each do
 		@calculadora = IMCCalculadora.new
 	end
@@ -17,7 +17,15 @@ describe IMCCalculadora do
 	it "lancar excecao quando altura igual a nulo" do
 		expect{@calculadora.calculaIMC(10,nil)}.to raise_error("altura nao pode ser nulo")
 	end
-	
+
+	it "lancar excecao quando digitar um caracter invalido no peso" do
+		expect{@calculadora.calculaIMC("ola",1.60)}.to raise_error("digitado caracter invalido")
+	end
+
+	it "lancar excecao quando peso igua a zero" do
+		expect{@calculadora.calculaIMC(0, 10)}.to raise_error("peso nao pode ser zero")
+	end
+
 	it "lancar excecao quando peso igual a nulo" do
 		expect{@calculadora.calculaIMC(nil,10)}.to raise_error("peso nao pode ser nulo")
 	end
@@ -45,5 +53,7 @@ describe IMCCalculadora do
 	it "retornar obesidade morbida quando o valor for maior ou igual a 40" do
 		expect(@calculadora.calculaIMC(110,1.60)).to be == "obesidade morbida"
 	end
+
+
 
 end

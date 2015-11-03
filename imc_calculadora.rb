@@ -7,8 +7,14 @@ class IMCCalculadora
 			raise ArgumentError, 'altura nao pode ser nulo'
 		end
 
-		if peso == nil
+		if peso == 0
+			raise ArgumentError, 'peso nao pode ser zero'
+		elsif peso == nil
 			raise ArgumentError, 'peso nao pode ser nulo'
+		end
+
+		unless peso.instance_of?(Fixnum)
+			raise ArgumentError, 'digitado caracter invalido'
 		end
 
 		imc = peso/(altura*altura)
